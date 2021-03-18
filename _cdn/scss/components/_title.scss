@@ -1,0 +1,30 @@
+$background-color: #fff;
+
+$color-green: #008000;
+$color-blue: #39AED9;
+$color-yellow: #F5B946;
+$color-red: #D94352;
+
+
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    "green":$color-green,
+    "blue":$color-blue,
+    "yellow": $color-yellow,
+    "red": $color-red
+  ), $theme-colors
+);
+
+//Função
+@mixin title($color) {
+  background-color: #{$background-color};
+  color: #{$color};
+}
+
+//Foreach
+@each $color, $value in $theme-colors {
+  .title-#{$color} {
+    @include title($value)
+  }
+}
